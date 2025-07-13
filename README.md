@@ -1,3 +1,3 @@
-- dotnet user-secrets set SendGridKey <SendGridKey>
+- dotnet user-secrets set SendGridKey "<YOUR_SENDGRID_API_KEY>"
 - dotnet ef database update
 - dotnet watch run
