@@ -1,0 +1,3 @@
+dotnet user-secrets set SendGridKey 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
+dotnet ef database update
+dotnet watch run
