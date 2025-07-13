@@ -449,3 +449,5 @@ C:\Users\fseyd\OneDrive\Desktop\CSCI_6844_Projects\FinalProjectMvc\obj\Debug\net
 C:\Users\fseyd\OneDrive\Desktop\CSCI_6844_Projects\FinalProjectMvc\obj\Debug\net9.0\compressed\b3zlt3z7v0-1ktijcimzc.gz
 C:\Users\fseyd\OneDrive\Desktop\CSCI_6844_Projects\FinalProjectMvc\obj\Debug\net9.0\compressed\uer3meabs2-8vqiqdzfsy.gz
 C:\Users\fseyd\OneDrive\Desktop\CSCI_6844_Projects\FinalProjectMvc\obj\Debug\net9.0\compressed\fm32kbo1fd-xre24ck5s9.gz
+C:\Users\fseyd\OneDrive\Desktop\CSCI_6844_Projects\FinalProjectMvc\obj\Debug\net9.0\FinalProjectMvc.sourcelink.json
+C:\Users\fseyd\OneDrive\Desktop\CSCI_6844_Projects\FinalProjectMvc\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
