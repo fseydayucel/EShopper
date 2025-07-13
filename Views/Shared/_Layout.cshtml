@@ -2,69 +2,144 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] - EShopper Product Management</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FinalProjectMvc.styles.css" asp-append-version="true" />
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <!-- Add in <head> of _Layout.cshtml -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom Theme Styles -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e8d0d0; /* Soft gray page background */
+            color: #333;
+        }
 
-    <!-- Libraries Stylesheet -->
-    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        .navbar {
+            background-color: #D19C97;
+        }
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="~/css/style.css" rel="stylesheet">
+        .navbar-brand h2 span {
+            background-color: #fff;
+            color: #D19C97;
+        }
+
+        .navbar-brand h2,
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+        .footer {
+            background-color: #D19C97;
+            color: #fff;
+        }
+
+        .footer a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        main {
+            background-color: #ffffff; /* White content box */
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-primary {
+            background-color: #D19C97;
+            border-color: #D19C97;
+        }
+
+        .btn-primary:hover {
+            background-color: #B86F67;
+            border-color: #B86F67;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .card,
+        .form-control,
+        .table {
+            background-color: #ffffff;
+            border-color: #ddd;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: "";
+            display: inline-block;
+            width: 40px;
+            height: 2px;
+            background: #333;
+            margin: 0 12px;
+            vertical-align: middle;
+        }
+    </style>
+
+    <!-- Project Styles -->
+    <link href="~/css/style.css" rel="stylesheet" />
+    <link href="~/css/site.css" asp-append-version="true" />
+    <link href="~/FinalProjectMvc.styles.css" asp-append-version="true" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <a class="text-decoration-none" class="navbar-brand" asp-area="" asp-controller="Product" asp-action="Index">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-controller="Product" asp-action="Index">
+                    <h2 class="m-0">
+                        <span class="fw-bold px-2 me-2">E</span>Shopper
+                    </h2>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Add nav items -->
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <div class="container my-5">
+        <main role="main" class="pb-4">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" style="position: relative !important;">
-        <div class="container">
-            &copy; 2025 - EShopper Product Management - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="footer text-light py-3 mt-auto">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span>&copy; 2025 - EShopper Product Management</span>
+            <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/easing/easing.min.js"></script>
-    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
     <script src="~/js/main.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
