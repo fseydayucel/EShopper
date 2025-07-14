@@ -11,5 +11,17 @@ public class ApplicationDbContext : IdentityDbContext
     {
     }
 
-    public DbSet<Product>? Products {get; set;}
+    public DbSet<Product> Products {get; set;}
+    public DbSet<Review> Reviews { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Review>()
+            .HasOne(r => r.Product)
+            .WithMany(p => p.Reviews)
+            .HasForeignKey(r => r.ProductId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
 }

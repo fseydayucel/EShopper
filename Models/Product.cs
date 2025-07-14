@@ -26,6 +26,6 @@ namespace FinalProjectMvc.Models
         [Range(0, 5)]
         public double Rating { get; set; }  // e.g., 4.5
 
-        public List<Review> Reviews { get; set; } = new List<Review>();
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 }

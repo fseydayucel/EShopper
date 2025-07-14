@@ -22,7 +22,7 @@ namespace FinalProjectMvc
         // GET: Product
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Products.ToListAsync());
+            return View(await _context.Products.Include(p => p.Reviews).ToListAsync());
         }
 
         // GET: Product/Details/5
@@ -34,6 +34,7 @@ namespace FinalProjectMvc
             }
 
             var product = await _context.Products
+                .Include(p => p.Reviews)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
             {
