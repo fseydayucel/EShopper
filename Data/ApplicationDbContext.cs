@@ -23,5 +23,7 @@ public class ApplicationDbContext : IdentityDbContext
             .WithMany(p => p.Reviews)
             .HasForeignKey(r => r.ProductId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        modelBuilder.Entity<MostReviewedResult>().HasNoKey();
     }
 }

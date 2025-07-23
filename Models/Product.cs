@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,8 +16,10 @@ namespace FinalProjectMvc.Models
 
         public string Description { get; set; }  // Full product description
 
+        [BindNever]
         public List<string> AvailableSizes { get; set; }  // XS, S, M, L, XL
 
+        [BindNever]
         public List<string> AvailableColors { get; set; }  // Black, White, Red...
 
         public string ImageUrl { get; set; }  // img/product-1.jpg, etc.

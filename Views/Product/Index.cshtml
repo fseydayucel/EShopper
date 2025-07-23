@@ -1,4 +1,4 @@
-@model IEnumerable<FinalProjectMvc.Models.Product>
+﻿@model IEnumerable<FinalProjectMvc.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,12 +13,58 @@
         <i class="fas fa-plus text-secondary me-1"></i> Add New Product
     </a>
 </div>
+<form method="get" asp-action="Index" class="row g-2 align-items-end mb-4">
+    <div class="col-md-3">
+        <label for="searchName" class="form-label">Name</label>
+        <input type="text" class="form-control" name="searchName" value="@Context.Request.Query["searchName"]" />
+    </div>
+    <div class="col-md-2">
+        <label for="sizeFilter" class="form-label">Size</label>
+        <select class="form-select" name="sizeFilter">
+            <option value="">All</option>
+            @foreach (var size in new[] { "S", "M", "L", "XL", "XS" })
+            {
+                <option value="@size" selected="@(Context.Request.Query["sizeFilter"] == size)">
+                    @size
+                </option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="colorFilter" class="form-label">Color</label>
+        <select class="form-select" name="colorFilter">
+            <option value="">All</option>
+            @foreach (var color in new[] { "Red", "Blue", "Gray", "Green", "Yellow", "Black", "White" })
+            {
+                <option value="@color" selected="@(Context.Request.Query["colorFilter"] == color)">
+                    @color
+                </option>
+            }
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="sortOrder" class="form-label">Sort By</label>
+        <select class="form-select" name="sortOrder">
+            <option value="">Default</option>
+            <option value="price_asc" selected="@(Context.Request.Query["sortOrder"] == "price_asc")">Price ↑</option>
+            <option value="price_desc" selected="@(Context.Request.Query["sortOrder"] == "price_desc")">Price ↓</option>
+            <option value="rating_asc" selected="@(Context.Request.Query["sortOrder"] == "rating_asc")">Rating ↑</option>
+            <option value="rating_desc" selected="@(Context.Request.Query["sortOrder"] == "rating_desc")">Rating ↓</option>
+        </select>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary w-100">Filter</button>
+    </div>
+    <div class="col-auto">
+            <a asp-action="Index" class="btn btn-secondary">Reset</a>
+        </div>
+</form>
 
     <div class="row px-xl-5 pb-3">
         @foreach (var item in Model)
         {
-            var reviewCount = item.Reviews?.Count();
-            var avgRating = reviewCount > 0 ? item.Reviews.Average(r => r.Rating) : 0;
+        var reviewCount = (item.Reviews != null) ? item.Reviews.Count() : 0;
+        var avgRating = (reviewCount > 0) ? item.Reviews.Average(r => r.Rating) : 0;
 
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="card product-item border-0 shadow-sm mb-4 rounded-3">

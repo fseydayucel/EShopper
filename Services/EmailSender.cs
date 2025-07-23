@@ -32,7 +32,7 @@ namespace FinalProjectMvc.Services
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("fseydayucel@gmail.com", "Password Recovery"),
+                From = new EmailAddress("seydademetoglu@gmail.com", "Password Recovery"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
