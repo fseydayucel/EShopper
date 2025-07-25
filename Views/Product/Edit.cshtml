@@ -82,7 +82,9 @@
                         <div id="preview" class="mt-3"></div>
                         @if (!string.IsNullOrEmpty(Model.ImageUrl))
                         {
-                            <img src="@Model.ImageUrl" class="img-fluid" style="max-width:300px;" />
+                            <div id="originalImage">
+                                <img src="@Model.ImageUrl" class="img-fluid" style="max-width:300px;" />
+                            </div>
                         }
                     </div>
                     <div id="drop-zone"
@@ -145,10 +147,19 @@
             .then(response => response.text())
             .then(path => {
                 imageUrlInput.value = path;
-                preview.innerHTML = `<img src="${path}" class="img-fluid mt-2" style="max-width: 300px;" />`;
+
+                // Hide old image if it exists
+                const originalImageDiv = document.getElementById("originalImage");
+                if (originalImageDiv) {
+                    originalImageDiv.style.display = "none";
+                }
+
+                // Show new uploaded image
+                preview.innerHTML = `<img src="${path}?t=${new Date().getTime()}" class="img-fluid mt-2" style="max-width: 300px;" />`;
             })
             .catch(err => alert("Upload failed: " + err));
         }
+
 
     </script>
 }

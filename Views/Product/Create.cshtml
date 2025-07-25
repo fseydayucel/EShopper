@@ -149,7 +149,7 @@
             .then(response => response.text())
             .then(path => {
                 imageUrlInput.value = path;
-                preview.innerHTML = `<img src="${path}" class="img-fluid mt-2" style="max-width: 300px;" />`;
+                preview.innerHTML = `<img src="${path}?t=${new Date().getTime()}" class="img-fluid mt-2" style="max-width: 300px;" />`;
             })
             .catch(err => alert("Upload failed: " + err));
         }
